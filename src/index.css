@@ -5,3 +5,8 @@
 * {
   @apply transition-colors duration-100;
 }
+@layer components {
+  .sidebar-action {
+    @apply block transition-all duration-200 ease-in-out;
+  }
+}

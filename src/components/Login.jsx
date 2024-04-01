@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import DarkMode from "../utils/DarkMode";
 
 const Login = () => {
-
   const [darkMode, setDarkMode] = useState(false);
   return (
     <>
-      <span onClick={()=>setDarkMode(!darkMode)}><DarkMode/></span>
+      <span onClick={() => setDarkMode(!darkMode)}>
+        <div className="fixed right-[-60px]">
+          <DarkMode />
+        </div>
+      </span>
       <div className={`w-[100vw] h-[100vh] ${darkMode && "dark"}`}>
         <div className="grid sm:grid-cols-2 sm:min-h-screen dark:bg-gray-900">
           <div className="hidden sm:block">
@@ -18,6 +21,17 @@ const Login = () => {
             />
           </div>
           <div className="p-20 pt-36">
+          <div className="sm:flex sm:justify-center sm:mb-4 absolute sm:static top-5 left-0 w-[280px]  ">
+              <img
+                src={`${
+                  darkMode
+                    ? "src/assets/blackLogo.png"
+                    : "src/assets/whiteLogo.png"
+                }`}
+                className="sm:w-[300px] "
+                alt="404"
+              />
+            </div>
             <div className="border-black border-4 rounded-xl p-4 dark:text-white dark:border-violet-500">
               <h1 className="font-bold from-neutral-400 text-4xl ">Log In</h1>
               <p className="pt-2">Do The Deeds😒</p>

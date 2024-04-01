@@ -4,9 +4,9 @@ import { useState } from "react";
 const DarkMode = () => {
   const [darkMode, setDarkMode] = useState(false);
   return (
-    <div className=" fixed left-[1450px] top-4 ">
+    <div className="sm:fixed absolute z-10 sm:left-[1450px] sm:top-4  top-4 right-20">
       <button
-        className="rounded-xl shadow-lg border-2 border-black w-[50px] h-[50px]  flex items-center justify-center hover:bg-black hover:text-white"
+        className="sm:rounded-xl rounded-full shadow-lg border-2 border-black w-[50px] h-[50px]  flex items-center justify-center hover:bg-black hover:text-white"
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode === false ? (
