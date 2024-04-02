@@ -30,7 +30,7 @@ const Home = () => {
               <img
                 className="sm:w-[320px] w-[240px]"
                 src={
-                  darkMode
+                  localStorage.getItem("mode") == "black"
                     ? "src/assets/blackLogo.png"
                     : "src/assets/whiteLogo.png"
                 }
