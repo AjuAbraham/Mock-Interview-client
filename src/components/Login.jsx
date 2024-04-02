@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import DarkMode from "../utils/DarkMode";
+import DarkMode from "../utils/DarkMode.jsx";
 
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
+  let check = localStorage.getItem("mode");
   return (
     <>
-      <span onClick={() => setDarkMode(!darkMode)}>
-        <div className="fixed right-[-60px]">
-          <DarkMode />
+      
+        <div className="fixed right-[-60px]"  onClick={() => setDarkMode(!darkMode)}>
+          <DarkMode/>
         </div>
-      </span>
-      <div className={`w-[100vw] h-[100vh] ${darkMode && "dark"}`}>
+  
+      <div className={`w-[100vw] h-[100vh] ${check === "black" && "dark"}`}>
         <div className="grid sm:grid-cols-2 sm:min-h-screen dark:bg-gray-900">
           <div className="hidden sm:block">
             <img
@@ -21,10 +22,10 @@ const Login = () => {
             />
           </div>
           <div className="p-20 pt-36">
-          <div className="sm:flex sm:justify-center sm:mb-4 absolute sm:static top-5 left-0 w-[280px]  ">
+            <div className="absolute sm:top-4 sm:left-[50%] w-[280px]  top-5 left-0 ">
               <img
                 src={`${
-                  darkMode
+                  check === "black"
                     ? "src/assets/blackLogo.png"
                     : "src/assets/whiteLogo.png"
                 }`}
@@ -34,7 +35,7 @@ const Login = () => {
             </div>
             <div className="border-black border-4 rounded-xl p-4 dark:text-white dark:border-violet-500">
               <h1 className="font-bold from-neutral-400 text-4xl ">Log In</h1>
-              <p className="pt-2">Do The Deeds😒</p>
+              <p className="pt-2">Enter Your Credentails 🫡</p>
               <div className="mt-10 flex ">
                 <form className="flex flex-col  w-full">
                   <input

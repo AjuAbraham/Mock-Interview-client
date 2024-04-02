@@ -6,12 +6,18 @@ const SignUp = () => {
   const [darkMode, setDarkMode] = useState(false);
   return (
     <>
-      <span onClick={() => setDarkMode(!darkMode)}>
-        <div className="fixed right-[-60px]">
-          <DarkMode />
-        </div>
-      </span>
-      <div className={`w-[100vw] h-[100vh] ${darkMode && "dark"}`}>
+      <div
+        className="fixed right-[-60px]"
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        <DarkMode />
+      </div>
+
+      <div
+        className={`w-[100vw] h-[100vh] ${
+          localStorage.getItem("mode") == "black" && "dark"
+        }`}
+      >
         <div className="grid sm:grid-cols-2 sm:min-h-screen dark:bg-gray-900">
           <div className="hidden sm:block">
             <img
@@ -21,10 +27,10 @@ const SignUp = () => {
             />
           </div>
           <div className="p-20 pt-36">
-            <div className="sm:flex sm:justify-center sm:mb-4 absolute sm:static top-5 left-0 w-[280px]  ">
+            <div className="absolute sm:top-4 sm:left-[50%] w-[280px]  top-5 left-0  ">
               <img
                 src={`${
-                  darkMode
+                  localStorage.getItem("mode") == "black"
                     ? "src/assets/blackLogo.png"
                     : "src/assets/whiteLogo.png"
                 }`}
@@ -57,7 +63,7 @@ const SignUp = () => {
                     Sign Up
                   </button>
                   <button className="rounded-lg bg-white border-2 border-black text-black w-full h-[50px] m-auto hover:bg-slate-100 dark:bg-black dark:text-white dark:hover:text-black dark:hover:bg-white">
-                    <Link to={"/login"}>Log In </Link>
+                    <Link to={"/"}>Log In </Link>
                   </button>
                 </form>
               </div>
