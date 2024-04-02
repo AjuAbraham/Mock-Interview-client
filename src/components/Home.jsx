@@ -25,7 +25,7 @@ const Home = () => {
       <div className={` ${localStorage.getItem("mode") === "black" && "dark"}`}>
         <div className="dark:bg-slate-800  bg-slate-300 ">
           {/* nav */}
-          <div className="flex items-center justify-between h-[80px] shadow-xl ">
+          <div className="flex sm:fixed sm:top-0 sm:w-full items-center justify-between h-[80px] shadow-xl ">
             <div>
               <img
                 className="sm:w-[320px] w-[240px]"
@@ -86,9 +86,9 @@ const Home = () => {
             </div>
           </div>
           {/* body */}
-          <div className="grid sm:grid-cols-2 sm:h-[623px] h-[700px] bg-white dark:bg-slate-900 ">
+          <div className="grid sm:grid-cols-2 sm:h-screen  h-[700px] bg-white  dark:bg-slate-900 ">
             <div className="absolute">
-              <p className="font-bold sm:text-6xl sm:mt-32 mt-24 sm:ml-20 ml-14 text-4xl dark:text-white">
+              <p className="font-bold sm:text-6xl sm:mt-60 mt-24 sm:ml-20 ml-14 text-4xl dark:text-white">
                 Mock Sync Studio
               </p>
               <div className="sm:text-4xl text-xl sm:ml-20 ml-14 mt-6  text-sky-500">
@@ -109,9 +109,9 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div className="flex items-center justify-start sm:ml-16  sm:mt-24 mt-60">
+            <div className="flex items-center justify-start sm:ml-16  sm:mt-30  mt-[200px]">
               <div
-                className="m-5 w-40 dark:hover:bg-violet-800 dark:bg-violet-500 dark:border-none text-white px-8 text-center py-4 rounded-xl  cursor-pointer border-2 border-blue-800 bg-sky-500 font-bold hover:bg-sky-600"
+                className="m-5   w-40 dark:hover:bg-violet-800 dark:bg-violet-500 dark:border-none text-white px-8 text-center py-4 rounded-xl  cursor-pointer border-2 border-blue-800 bg-sky-500 font-bold hover:bg-sky-600"
                 onClick={updateStateA}
               >
                 Join
@@ -124,7 +124,7 @@ const Home = () => {
               </div>
             </div>
 
-            <div className="flex mt-[-35px] items-center justify-center ">
+            <div className="flex   items-center justify-center ">
               {join === true ? <Join /> : null}
               {create === true ? <CreateRoom /> : null}
             </div>

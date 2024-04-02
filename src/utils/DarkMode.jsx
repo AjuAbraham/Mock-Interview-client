@@ -8,7 +8,6 @@ const DarkMode = () => {
     darkMode === false
       ? localStorage.setItem("mode", "black")
       : localStorage.setItem("mode", "white");
-    
   };
   return (
     <div className="sm:fixed absolute z-10 sm:left-[1450px] sm:top-4  top-4 right-20">
