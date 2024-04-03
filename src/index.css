@@ -6,3 +6,8 @@
   @apply transition-colors duration-100;
 }
 
+@layer components {
+  .darkElement {
+    @apply bg-white sm:mt-[500px] sm:ml-[755px] bottom-32 ;
+  }
+}
