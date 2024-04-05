@@ -5,6 +5,7 @@ import { RxCross1 } from "react-icons/rx";
 import { Typewriter } from "react-simple-typewriter";
 import Join from "../utils/Join";
 import CreateRoom from "../utils/CreateRoom";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -40,13 +41,13 @@ const Home = () => {
             <div>
               <div className="sm:flex gap-6 mr-40  hidden">
                 <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline dark:text-white">
-                  Profile
+                  <NavLink to={"/profile"}>Profile</NavLink>
                 </p>
                 <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline dark:text-white">
-                  FeedBacks
+                  <NavLink to={"/profile"}>FeedBack</NavLink>
                 </p>
                 <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline hover:text-red-600 dark:text-white dark:hover:text-red-600">
-                  Logout
+                  <NavLink to={"/"}>LogOut</NavLink>
                 </p>
               </div>
 
