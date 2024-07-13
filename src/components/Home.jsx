@@ -23,7 +23,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className={` ${localStorage.getItem("mode") === "black" && "dark"}`}>
+      <div>
         <div className="dark:bg-slate-800  bg-slate-300 ">
           {/* nav */}
           <div className="flex sm:fixed sm:top-0 sm:w-full items-center justify-between h-[80px] shadow-xl ">
