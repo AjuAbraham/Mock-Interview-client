@@ -1,12 +1,14 @@
-import { useState } from "react";
+import {   useState } from "react";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import DarkMode from "../utils/DarkMode.jsx";
 import axios from "axios";
 
 
+
 const Login = () => {
   const [darkMode, setDarkMode] = useState(false);
+  
   const [user,setUser] = useState({
     email: "",
     password: "",
@@ -31,15 +33,15 @@ const Login = () => {
       toast.error(error.response.data.message);
     }
   }
-  let check = localStorage.getItem("mode");
+  
   return (
     <>
       
-        <div className="fixed right-[-60px]"  onClick={() => setDarkMode(!darkMode)}>
+        <div className="fixed right-[-60px]" onClick={() => setDarkMode(!darkMode)}>
           <DarkMode/>
         </div>
   
-      <div className={`w-[100vw] h-[100vh] ${check === "black" && "dark"}`}>
+      <div className={`w-[100vw] h-[100vh]`}>
         <div className="grid sm:grid-cols-2 sm:min-h-screen dark:bg-gray-900">
           <div className="hidden sm:block">
             <img
@@ -50,9 +52,9 @@ const Login = () => {
           </div>
           <div className="p-20 pt-36">
             <div className="absolute sm:top-4 sm:left-[50%] w-[280px]  top-5 left-0 ">
-              <img
+            <img
                 src={`${
-                  check === "black"
+                  localStorage.getItem("mode") === "black"
                     ? "src/assets/blackLogo.png"
                     : "src/assets/whiteLogo.png"
                 }`}

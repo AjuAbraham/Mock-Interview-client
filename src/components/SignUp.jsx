@@ -55,9 +55,7 @@ const SignUp = () => {
       </div>
 
       <div
-        className={`w-[100vw] h-[100vh] ${
-          localStorage.getItem("mode") == "black" && "dark"
-        }`}
+        className={`w-[100vw] h-[100vh]`}
       >
         <div className="grid sm:grid-cols-2 sm:min-h-screen dark:bg-gray-900">
           <div className="hidden sm:block">

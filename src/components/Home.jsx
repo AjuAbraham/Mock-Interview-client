@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [join, setJoin] = useState(false);
+  const [join, setJoin] = useState(true);
   const [create, setCreate] = useState(false);
   const [open, setOpen] = useState(false);
 
