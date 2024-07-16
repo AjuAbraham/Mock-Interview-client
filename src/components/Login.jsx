@@ -2,7 +2,7 @@ import {   useState } from "react";
 import { Link } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import DarkMode from "../utils/DarkMode.jsx";
-import axios from "axios";
+
 
 
 
@@ -21,18 +21,18 @@ const Login = () => {
       [name]:value
     })
   }
-  const handleSubmit = async (e)=>{
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("email",user.email);
-    formData.append("password",user.password);
-    try {
-      const res = await axios.post("http://localhost:8000/api/v1/user/login",formData);
-      console.log("res is: ",res);
-    } catch (error) {
-      toast.error(error.response.data.message);
-    }
-  }
+  // const handleSubmit = async (e)=>{
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("email",user.email);
+  //   formData.append("password",user.password);
+  //   try {
+  //     const res = await axios.post("http://localhost:8000/api/v1/user/login",formData);
+  //     console.log("res is: ",res);
+  //   } catch (error) {
+  //     toast.error(error.response.data.message);
+  //   }
+  // }
   
   return (
     <>
@@ -66,7 +66,7 @@ const Login = () => {
               <h1 className="font-bold from-neutral-400 text-4xl ">Log In</h1>
               <p className="pt-2">Enter Your Credentails 🫡</p>
               <div className="mt-10 flex ">
-                <form onSubmit={handleSubmit} className="flex flex-col  w-full">
+                <form  className="flex flex-col  w-full">
                   <input
                     className="p-2 border-b-2 border-b-black mb-3 outline-none dark:rounded-lg text-base  dark:bg-slate-600"
                     type="email"
@@ -87,7 +87,7 @@ const Login = () => {
                   <button className="rounded-lg  bg-black text-white w-full h-[50px] m-auto my-3 hover:bg-zinc-500 dark:hover:text-black dark:hover:bg-white">
                     Log In
                   </button>
-                  <button type="submit" className="rounded-lg bg-white border-2 border-black text-black w-full h-[50px] m-auto hover:bg-slate-100 dark:bg-black dark:text-white dark:hover:text-black dark:hover:bg-white">
+                  <button  className="rounded-lg bg-white border-2 border-black text-black w-full h-[50px] m-auto hover:bg-slate-100 dark:bg-black dark:text-white dark:hover:text-black dark:hover:bg-white">
                     <Link to={"/signup"}>Sign Up </Link>
                   </button>
                   <p className="text-center mb-2 font-bold text-xl ">Or</p>
