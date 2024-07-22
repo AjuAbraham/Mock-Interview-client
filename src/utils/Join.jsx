@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { validate } from "uuid";
+import { useSocket } from "../context/SocketContext.jsx";
 const Join = () => {
   const [roomId, setRoomId] = useState("");
   const [name, setName] = useState("");
-  const handleChange = (e) => {
-    setRoomId(e.target.value);
-  };
-  const handleName = (e) => {
-    setName(e.target.value);
-  };
+  const {socket,user} = useSocket();
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+
+const handleRoomJoin = useCallback((data)=>{
+  console.log(`joined on this room ${data}`)
+  navigate(`/room/${data}`);
+  
+},[navigate])
+useEffect(()=>{
+  socket.on("room-joined",handleRoomJoin)
+
+  return ()=>{
+    socket.off("room-joined",handleRoomJoin)
+  }
+},[handleRoomJoin, socket])
+
+
+
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     if (name === "" && validate(roomId) == "") {
       toast.error("Fill All the Credentails");
@@ -27,8 +39,9 @@ const Join = () => {
     if (validate(roomId) == false) {
       toast.error("Please Enter Valid Room Id");
       return;
-    } else navigate(`/room/${roomId}`);
-  };
+    }
+    socket.emit("room-info",{user:user._id,roomId}) 
+  }, [name,user, roomId, socket]);
 
   return (
     <>
@@ -41,14 +54,14 @@ const Join = () => {
             <input
               className="mb-4 p-2 hover:outline outline-2 dark:bg-slate-600 dark:text-white dark:hover:outline-yellow-500 outline-violet-800 border-2 rounded-xl "
               type="text"
-              onChange={handleChange}
+              onChange={(e) => setRoomId(e.target.value)}
               value={roomId}
               placeholder="ROOM ID"
             />
             <input
               className="mb-4 p-2 hover:outline outline-2 dark:bg-slate-600 dark:text-white dark:hover:outline-yellow-500 outline-violet-800 border-2 rounded-xl"
               type="text"
-              onChange={handleName}
+              onChange={(e) => setName(e.target.value)}
               value={name}
               placeholder="USERNAME"
             />
