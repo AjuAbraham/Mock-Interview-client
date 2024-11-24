@@ -4,12 +4,14 @@ import SignUp from "./components/SignUp.jsx";
 import Home from "./components/Home.jsx";
 import Room from "./components/Room.jsx";
 import Error from "./components/Error.jsx";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
 const App = () => {
   
   return (
     <>
+    <GoogleOAuthProvider clientId="44357822311-4jntsjai5tsf8fojq22m2m5beej1i3mj.apps.googleusercontent.com">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
+      </GoogleOAuthProvider>
     </>
   );
 };

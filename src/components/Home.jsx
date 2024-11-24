@@ -5,13 +5,15 @@ import { RxCross1 } from "react-icons/rx";
 import { Typewriter } from "react-simple-typewriter";
 import Join from "../utils/Join";
 import CreateRoom from "../utils/CreateRoom";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [join, setJoin] = useState(true);
   const [create, setCreate] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const updateStateA = () => {
     setJoin(!join);
@@ -20,6 +22,11 @@ const Home = () => {
   const updateStateB = () => {
     setCreate(!create);
     setJoin(false);
+  };
+  const handleLogOut = async () => {
+    console.log("here");
+    localStorage.setItem('accessToken',null);
+    navigate('/');
   };
   return (
     <>
@@ -46,7 +53,9 @@ const Home = () => {
                 <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline dark:text-white">
                   <NavLink to={"/profile"}>FeedBack</NavLink>
                 </p>
-                <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline hover:text-red-600 dark:text-white dark:hover:text-red-600">
+                <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline hover:text-red-600 dark:text-white dark:hover:text-red-600" 
+                 onClick={handleLogOut}
+                >
                   <NavLink to={"/"}>LogOut</NavLink>
                 </p>
               </div>
@@ -63,7 +72,10 @@ const Home = () => {
                 <p className=" text-sky-600 font-bold h-12 flex items-center justify-center cursor-pointer p-2 border-b-2 mb-2 shdaow-sm dark:text-white dark:border-black ">
                   FeedBacks
                 </p>
-                <p className="  font-bold cursor-pointer h-12 flex items-center justify-center p-2 text-red-600 shdaow-sm  dark:border-black  ">
+                <p
+                  onClick={handleLogOut}
+                  className="  font-bold cursor-pointer h-12 flex items-center justify-center p-2 text-red-600 shdaow-sm  dark:border-black  "
+                >
                   Logout
                 </p>
               </div>

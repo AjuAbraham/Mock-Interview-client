@@ -4,9 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 
-const loginWithGoogle = async () => {
-  window.open("http://localhost:8000/api/v1/auth/google/callback", "_self");
-};
+// const loginWithGoogle = async () => {
+//   window.open("http://localhost:8000/api/v1/auth/google/callback", "_self");
+// };
 const SignUp = () => {
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(false);
@@ -18,20 +18,15 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    };
-    const formData = new FormData();
-    formData.append("username", data.username);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    console.log("Form Data:", Object.fromEntries(formData));
+    // const formData = new FormData();
+    // formData.append("username", data.username);
+    // formData.append("email", data.email);
+    // formData.append("password", data.password);
+    // console.log("Form Data:", Object.fromEntries(formData));
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v1/user/register",
-        formData,config
+        "http://localhost:3000/api/v1/users/register",
+        data
       );
       console.log("register data is: ", res);
       navigate("/");
@@ -114,8 +109,8 @@ const SignUp = () => {
                   <button type="submit" className="rounded-lg  bg-black text-white w-full h-[50px] m-auto my-3 hover:bg-zinc-500 dark:hover:text-black dark:hover:bg-white">
                     Sign Up
                   </button>
-                  <p className="text-center mb-2 font-bold text-xl ">Or</p>
-                  <button
+                  {/* <p className="text-center mb-2 font-bold text-xl ">Or</p> */}
+                  {/* <button
                     onClick={loginWithGoogle}
                     className="border-2 dark:border-white border-black shadow-2xl p-2 flex justify-center items-center gap-x-4 rounded-xl dark:hover:bg-white hover:bg-black dark:hover:text-black hover:text-white"
                   >
@@ -125,7 +120,7 @@ const SignUp = () => {
                       alt="404"
                     />
                     Log In With Google
-                  </button>
+                  </button> */}
                 </form>
               </div>
             </div>
