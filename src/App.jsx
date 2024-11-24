@@ -17,8 +17,8 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/room/:id" element={<Room />} />
-          <Route path="*" element={<Error />} />
+          <Route path="/room/:id" element={<Error />} />
+          <Route path="*" element={<Room />} />
         </Routes>
       </BrowserRouter>
       </GoogleOAuthProvider>
