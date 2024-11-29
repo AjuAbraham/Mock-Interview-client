@@ -3,8 +3,9 @@ import Login from "./components/Login.jsx";
 import SignUp from "./components/SignUp.jsx";
 import Home from "./components/Home.jsx";
 import Room from "./components/Room.jsx";
-import Error from "./components/Error.jsx";
+import Screen from "./components/Screen.jsx"
 import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/room/:id" element={<Error />} />
+          <Route path="/room/:id" element={<Screen/>} />
           <Route path="*" element={<Room />} />
         </Routes>
       </BrowserRouter>

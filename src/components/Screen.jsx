@@ -77,12 +77,12 @@ console.log("Hello, World!");
   `,
 };
 
-function Error() {
+function Screen() {
   const [open, setOpen] = useState(false);
   const [code, setCode] = useState(""); 
   const [editorHeight, setEditorHeight] = useState("85vh");
   const [output, setOutput] = useState("Hello, World!");
-  const [selectedLanguage, setSelectedLanguage] = useState("c"); // Default language
+  const [selectedLanguage, setSelectedLanguage] = useState("javascript");
   const check = localStorage.getItem("mode");
 
   useEffect(() => {
@@ -191,4 +191,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default Screen;
