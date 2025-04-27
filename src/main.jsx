@@ -1,12 +1,19 @@
-
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { ClerkProvider } from "@clerk/clerk-react";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "./index.css";
-import { SocketProvider } from "./context/SocketContext.jsx"
-ReactDOM.createRoot(document.getElementById("root")).render(
-    
-      <SocketProvider>
+import App from "./App.jsx";
+import { ThemeProvider } from "./components/ThemeProvider.jsx";
+
+const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <ClerkProvider publishableKey={publishableKey}>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <App />
-      </SocketProvider>
-    
+      </ThemeProvider>
+    </ClerkProvider>
+  </StrictMode>
 );
