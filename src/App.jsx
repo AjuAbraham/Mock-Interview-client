@@ -1,30 +1,42 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./components/Login.jsx";
-import SignUp from "./components/SignUp.jsx";
-import Home from "./components/Home.jsx";
-import Room from "./components/Room.jsx";
-import Screen from "./components/Screen.jsx"
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
+import Home from "./pages/Home";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Room from "./pages/Room";
+import StreamProvider from "./Providers/StreamProvider";
 
-
-
-const App = () => {
-  
+function App() {
   return (
-    <>
-    <GoogleOAuthProvider clientId="44357822311-4jntsjai5tsf8fojq22m2m5beej1i3mj.apps.googleusercontent.com">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/room/:id" element={<Screen/>} />
-          <Route path="*" element={<Room />} />
-        </Routes>
-      </BrowserRouter>
-      </GoogleOAuthProvider>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <StreamProvider>
+                <Home />
+              </StreamProvider>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/room/:id"
+          element={
+            <ProtectedRoute>
+              <StreamProvider>
+                <Room />
+              </StreamProvider>
+            </ProtectedRoute>
+          }
+        />
+        {/*<Route path="/room/:id" element={<Screen />} /> */}
+        <Route path="*" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
 export default App;

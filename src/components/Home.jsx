@@ -7,7 +7,6 @@ import Join from "../utils/Join";
 import CreateRoom from "../utils/CreateRoom";
 import { NavLink, useNavigate } from "react-router-dom";
 
-
 const Home = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [join, setJoin] = useState(true);
@@ -25,8 +24,8 @@ const Home = () => {
   };
   const handleLogOut = async () => {
     console.log("here");
-    localStorage.setItem('accessToken',null);
-    navigate('/');
+    localStorage.setItem("accessToken", null);
+    navigate("/");
   };
   return (
     <>
@@ -53,8 +52,9 @@ const Home = () => {
                 <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline dark:text-white">
                   <NavLink to={"/profile"}>FeedBack</NavLink>
                 </p>
-                <p className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline hover:text-red-600 dark:text-white dark:hover:text-red-600" 
-                 onClick={handleLogOut}
+                <p
+                  className="hover:scale-110 text-sky-600 font-bold cursor-pointer hover:underline hover:text-red-600 dark:text-white dark:hover:text-red-600"
+                  onClick={handleLogOut}
                 >
                   <NavLink to={"/"}>LogOut</NavLink>
                 </p>
@@ -79,9 +79,7 @@ const Home = () => {
                   Logout
                 </p>
               </div>
-              <span onClick={() => setDarkMode(!darkMode)}>
-                <DarkMode />
-              </span>
+              <span>{/* <DarkMode /> */}</span>
 
               <div onClick={() => setOpen(!open)}>
                 {open ? (
